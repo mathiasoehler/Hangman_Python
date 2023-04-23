@@ -1,16 +1,19 @@
 # Write your code here
 def teaser():
-    print("""H A N G M A N
-    The game will be available soon.""")
+    print("H A N G M A N")
 
 
 def play(words_list):
+    from random import choice
+    searching_word = choice(words_list)
     guest = str(input("Guess the word:")).lower()
-    if guest in words_list:
+    if guest in searching_word:
         print("You survived!")
     else:
         print("You lost!")
 
 
-words = ["python"]
+words = ["python", "java", "swift", "javascript"]
+
+teaser()
 play(words)
