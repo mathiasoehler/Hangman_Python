@@ -1,3 +1,8 @@
 content:
 - Program with numbers
 - Tuple
+- String formatting
+- Basic string methods
+- Escape sequences
+- Split and join
+- Search in a string
