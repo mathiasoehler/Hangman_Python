@@ -755,6 +755,32 @@ files:
     if __name__ == '__main__':
         HangmanTest('hangman.hangman').run_tests()
   learner_created: false
-feedback_link: https://hyperskill.org/projects/69/stages/378/implement#comment
-status: Unchecked
+feedback_link: https://hyperskill.org/learn/step/6088#comment
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #1
+
+    Incorrect mask transition. Cannot find correct mask in the output:
+    Word: java
+    Letter: I
+    Previous mask: ----
+    Correct current mask: --v-
+
+    Please find below the output of your program during this failed test.
+    Note that the '>' character indicates the beginning of the input line.
+
+    ---
+
+    H A N G M A N
+
+    ----
+    Input a letter: > v
+
+    --v-
+    Input a letter: > I
+
+    Please, enter a lowercase letter from the English alphabet.
+    Input a letter:
+  time: "Mon, 22 May 2023 14:10:12 UTC"
 record: -1

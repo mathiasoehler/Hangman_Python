@@ -1,33 +1,42 @@
 import random
 
+
+
+words = ["python", "java", "swift", "javascript"]
+selected_word = random.choice(words)
+masked_word = list(len(selected_word) * "-")
+input_letter_list = []
+attempts = 8
 print("H A N G M A N")
-word = random.choice(['python', 'java', 'swift', 'javascript'])
-letters = dict({c: '-' for c in word})
-word_game = ("\n" + "".join(letters[c] for c in word)) # gibt das Wort mit - aus
-counter = 0 # runden Zähler
-word_set = set(word)
-kontrolle = set() # alle buchstaben vom Wort enthalten
+print("")
+print(''.join(masked_word))
+while attempts > 0:
+    input_letter = input("Input a letter: ")
+    print("")
+    letter = input_letter.islower()
 
-while counter < 8:
-    print(len(kontrolle))
-    print(len(word_set))
-    print(kontrolle)
-    print(word_set)
+    if len(input_letter) != 1:
+        print("Please, input a single letter")
+    elif letter != True:
+        print("Please, enter a lowercase letter from the English alphabet.")
+    elif input_letter in input_letter_list:
+        print("You've already guessed this letter.")
+    else:
+        if input_letter not in selected_word:
+            print("That letter doesn't appear in the word.")
+            attempts -= 1
+            input_letter_list.append(input_letter)
 
-    counter += 1
-    word_game = ("\n" + "".join(letters[c] for c in word)) # gibt das Wort mit - aus
-    print(word_game)
-    new_letter = input("Input a letter:")
-    if new_letter in letters: # wenn der gültige Buchstabe eingegeben wird wird dieser aufgedeckt
-        letters[new_letter] = new_letter
-        kontrolle.add(new_letter)
-        print("new")
-    elif new_letter not in letters:  # Ausgabe wenn der Buchstabe nicht im Wort enthalten ist: "That letter doesn't appear in the word"
-        print("That letter doesn't appear in the word")
-
-    elif new_letter in kontrolle:# bei einer doppeleingabe des Buchstaben: No improvements.
-        print("No improvements.")
-    elif len(kontrolle) == len(word_set):  # Wenn der Spieler gewinnt ausgabe von: Siehe bsp.
-        print("test")
-
-print("\nThanks for playing!")
+        else:
+            input_letter_list.append(input_letter)
+            for i, letter in enumerate(selected_word):
+                if letter == input_letter:
+                    masked_word[i] = input_letter
+        print(''.join(masked_word))
+        if "-" not in masked_word:
+            print(f"You guessed the word{selected_word}!")
+            print("You survived!")
+            attempts = 0
+if "-" in masked_word:
+    print("")
+    print("You lost!")
